@@ -38,7 +38,7 @@ function clearOverlays() {
 // MAP
 // -----------------------------------------------------------------------------
 
-function initMap() {
+function initMap(condition) {
     var openedInfoWindow;
 
     function createGroupMember(name, area) {
@@ -81,7 +81,7 @@ function initMap() {
     }
 }
 
-function reInitMap() {
+function reInitMap(condition) {
     var openedInfoWindow;
 
     function createGroupMember(name, area) {

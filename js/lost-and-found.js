@@ -4,11 +4,12 @@ $(document).ready(function() {
     // MAP
     // -------------------------------------------------------------------------
 
-    initMap();
+    var condition = "public";
+    initMap(condition);
 
     $("#logo").click(function() {
         clearOverlays();
-        reInitMap();
+        reInitMap(condition);
     });
 
     // -------------------------------------------------------------------------
@@ -36,6 +37,15 @@ $(document).ready(function() {
         $("#profile").show();
     });
 
+    $(".tab-conditions").click(function() {
+        if (!$(this).hasClass("active")) {
+            $(".tabs").removeClass("active");
+            $("li.tabs.tab-conditions").addClass("active");
+        } else {
+            $(".tabs").removeClass("active");
+        }
+    });
+
     // -------------------------------------------------------------------------
     // GROUPS
     // -------------------------------------------------------------------------
@@ -51,13 +61,13 @@ $(document).ready(function() {
     $("#show-group1").click(function() {
         clearOverlays();
         group = groups["UBC"];
-        reInitMap();
+        reInitMap(condition);
     });
 
     $("#show-group2").click(function() {
         clearOverlays();
         group = groups["Downtown"];
-        reInitMap();
+        reInitMap(condition);
     });
 
     // -------------------------------------------------------------------------

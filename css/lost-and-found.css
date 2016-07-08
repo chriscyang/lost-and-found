@@ -16,7 +16,8 @@
     color: white;
 }
 
-#navbar {
+#navbar,
+.dropdown-menu {
     border: #4db6ac;
     background-color: #4db6ac;
     background-image: none;
@@ -25,7 +26,9 @@
 .navbar-default .navbar-nav > .active,
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a:focus,
+.dropdown li a:hover,
+.dropdown li a:focus {
     color: #000;
     background: #00796b;
 }
