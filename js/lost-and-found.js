@@ -144,7 +144,7 @@ $(document).ready(function() {
 
     $("#add-location").click(function() {
         if ($("#new-location").val()) {
-            $("#locations").append("<h3>" + $("#new-location").val() + "</h3>");
+            $("#locations").append("<p>" + $("#new-location").val() + "</p>");
         } else {
             $("#new-location").popover("show");
             setTimeout(function() {
@@ -179,8 +179,8 @@ function showFriend(name) {
     $("#friend-name").html(name);
     $("#friend-picture").initial({
         name     : name,
-        width    : 200,
-        height   : 200,
+        width    : 120,
+        height   : 120,
         fontSize : 80,
     });
 }
