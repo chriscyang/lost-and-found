@@ -134,8 +134,8 @@ $(document).ready(function() {
             case "Signal":
                 signal();
                 break;
-            case "No Signal":
-                noSignal();
+            case "Private":
+                private();
                 break;
             default:
                 break;
@@ -170,11 +170,11 @@ $(document).ready(function() {
         }, 10000));
     }
 
-    function noSignal() {
+    function private() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        condition = "No Signal";
+        condition = "Private";
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
