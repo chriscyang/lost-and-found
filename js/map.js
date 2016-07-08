@@ -1,4 +1,4 @@
-var group = groups["UBC"];
+var group = null;
 var condition = "Public";
 var timeout;
 
@@ -41,7 +41,7 @@ function clearOverlays() {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center           : group["centre"],
+        center           : groups["UBC"]["centre"],
         zoom             : 14,
         mapTypeId        : google.maps.MapTypeId.ROADMAP,
         disableDefaultUI : true,

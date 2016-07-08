@@ -129,6 +129,20 @@ $(document).ready(function() {
     // CONDITIONS
     // -------------------------------------------------------------------------
 
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+            $("#modal-conditions").modal("hide");
+        }
+    });
+
+    if (condition === "Public") {
+        $("input:radio[value=Public]").attr("checked", "checked");
+    } else if (condition === "Signal") {
+        $("input:radio[value=Signal]").attr("checked", "checked");
+    } else if (condition === "Private") {
+        $("input:radio[value=Private]").attr("checked", "checked");
+    }
+
     $("input[value=Save]").click(function() {
         var selectedCondition = $("input[name=condition]:checked").val();
         switch (selectedCondition) {
@@ -156,7 +170,9 @@ $(document).ready(function() {
             $(".tab-profile").click();
             $("#sensitive-locations").hide();
         }
-        initGroup();
+        if (group) {
+            initGroup();
+        }
     }
 
     function signal() {
@@ -167,7 +183,9 @@ $(document).ready(function() {
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
-        initGroup();
+        if (group) {
+            initGroup();
+        }
         timeout.push(setTimeout(function() {
             markers[3].setMap(null);
             alert(markers[3]["name"] + " has gone near a sensitive location.");
@@ -182,7 +200,9 @@ $(document).ready(function() {
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
-        initGroup();
+        if (group) {
+            initGroup();
+        }
         timeout.push(setTimeout(function() {
             markers[3].setMap(null);
         }, 10000));
