@@ -4,17 +4,16 @@ $(document).ready(function() {
     // MAP
     // -------------------------------------------------------------------------
 
-    var condition = "public";
-    initMap(condition);
+    initMap();
 
-    $("#logo").click(function() {
+    // -------------------------------------------------------------------------
+    // NAVBAR MENU
+    // -------------------------------------------------------------------------
+
+     $("#logo").click(function() {
         clearOverlays();
-        reInitMap(condition);
+        reInitMap();
     });
-
-    // -------------------------------------------------------------------------
-    // PAGE TRANSITIONS
-    // -------------------------------------------------------------------------
 
     $(".tab-map").click(function() {
         $(".tabs").removeClass("active");
@@ -46,6 +45,31 @@ $(document).ready(function() {
         }
     });
 
+    $("#public").click(function() {
+        clearOverlays();
+        condition = "Public";
+        reInitMap();
+    });
+
+    $("#signal").click(function() {
+        clearOverlays();
+        condition = "Signal";
+        reInitMap();
+        setTimeout(function() {
+            markers[3].setMap(null);
+            alert(markers[3]["name"] + " has gone near a sensitive location.");
+        }, 20000);
+    });
+
+    $("#no-signal").click(function() {
+        clearOverlays();
+        condition = "No Signal";
+        reInitMap();
+        setTimeout(function() {
+            markers[3].setMap(null);
+        }, 20000);
+    });
+
     // -------------------------------------------------------------------------
     // GROUPS
     // -------------------------------------------------------------------------
@@ -61,13 +85,13 @@ $(document).ready(function() {
     $("#show-group1").click(function() {
         clearOverlays();
         group = groups["UBC"];
-        reInitMap(condition);
+        reInitMap();
     });
 
     $("#show-group2").click(function() {
         clearOverlays();
         group = groups["Downtown"];
-        reInitMap(condition);
+        reInitMap();
     });
 
     // -------------------------------------------------------------------------

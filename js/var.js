@@ -26,7 +26,7 @@ var groups = {
         area    : areas["UBC"],
         centre  : new google.maps.LatLng(49.2611, -123.2531),
         members : [
-            "Me",
+            "User",
             "Brian",
             "Eric",
             "Lisa",
@@ -40,7 +40,7 @@ var groups = {
             lng : -123.1211
         },
         members : [
-            "Me",
+            "User",
             "Adam",
             "Calvin",
             "Dexter",

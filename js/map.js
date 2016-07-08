@@ -1,5 +1,5 @@
-// Set the group here
-var group = groups["Downtown"];
+var group = groups["UBC"];
+var condition = "Public";
 
 var map;
 var markers = [];
@@ -20,7 +20,7 @@ function generateRandomLoc(area) {
 }
 
 function getMarkerIcon(name) {
-    if (name === "Me") {
+    if (name === "User") {
         return "http://maps.google.com/mapfiles/arrow.png";
     } else {
         return "https://www.google.com/mapfiles/marker" + name[0] + ".png";
@@ -38,22 +38,19 @@ function clearOverlays() {
 // MAP
 // -----------------------------------------------------------------------------
 
-function initMap(condition) {
+function initMap() {
     var openedInfoWindow;
 
     function createGroupMember(name, area) {
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
-        if (name === "Me") {
-            var content = "<h4>You</b></h4>";
-        } else {
-            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
-        }
+        var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
             map      : map,
             icon     : getMarkerIcon(name),
             content  : content,
+            name     : name,
         });
         var infoWindow = new google.maps.InfoWindow({
             content : marker["content"],
@@ -65,6 +62,7 @@ function initMap(condition) {
             }
             infoWindow.open(map, marker);
             openedInfoWindow = infoWindow;
+            console.log("User clicked on " + marker["name"] + "'s icon.");
         });
         console.log(name + " was placed at " + marker["position"] + ".");
     };
@@ -79,24 +77,23 @@ function initMap(condition) {
     for (var i = 0; i < group["members"].length; ++i) {
         createGroupMember(group["members"][i], group["area"]);
     }
+
+    console.log("Map initialized under " + condition + " condition.");
 }
 
-function reInitMap(condition) {
+function reInitMap() {
     var openedInfoWindow;
 
     function createGroupMember(name, area) {
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
-        if (name === "Me") {
-            var content = "<h4>You</b></h4>";
-        } else {
-            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
-        }
+        var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
             map      : map,
             icon     : getMarkerIcon(name),
             content  : content,
+            name     : name,
         });
         var infoWindow = new google.maps.InfoWindow({
             content : marker["content"],
@@ -108,6 +105,7 @@ function reInitMap(condition) {
             }
             infoWindow.open(map, marker);
             openedInfoWindow = infoWindow;
+            console.log("User clicked on " + marker["name"] + "'s icon.");
         });
         console.log(name + " was placed at " + marker["position"] + ".");
     };
@@ -117,4 +115,6 @@ function reInitMap(condition) {
     for (var i = 0; i < group["members"].length; ++i) {
         createGroupMember(group["members"][i], group["area"]);
     }
+
+    console.log("Map initialized under " + condition + " condition.");
 }
