@@ -41,7 +41,7 @@ $(document).ready(function() {
     $(".tab-refresh").click(function() {
         if (confirm("Are you sure you want to refresh the map?")) {
             clearOverlays();
-            reInitMap();
+            initGroup();
         } else {
             return false;
         }
@@ -76,11 +76,11 @@ $(document).ready(function() {
             console.log("Switching to Group 1 ...");
             clearOverlays();
             group = groups["UBC"];
-            reInitMap();
-            $(".tab-map").click();
-        } else {
-            $(".tab-map").click();
+            initGroup();
         }
+
+        $(".tab-map").click();
+        $("#listing-group1").collapse("hide");
     });
 
     $("#show-group2").click(function() {
@@ -100,11 +100,11 @@ $(document).ready(function() {
             console.log("Switching to Group 2 ...");
             clearOverlays();
             group = groups["Downtown"];
-            reInitMap();
-            $(".tab-map").click();
-        } else {
-            $(".tab-map").click();
+            initGroup();
         }
+
+        $(".tab-map").click();
+        $("#listing-group2").collapse("hide");
     });
 
     // -------------------------------------------------------------------------
@@ -156,7 +156,7 @@ $(document).ready(function() {
             $(".tab-profile").click();
             $("#sensitive-locations").hide();
         }
-        reInitMap();
+        initGroup();
     }
 
     function signal() {
@@ -167,7 +167,7 @@ $(document).ready(function() {
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
-        reInitMap();
+        initGroup();
         timeout.push(setTimeout(function() {
             markers[3].setMap(null);
             alert(markers[3]["name"] + " has gone near a sensitive location.");
@@ -182,7 +182,7 @@ $(document).ready(function() {
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
-        reInitMap();
+        initGroup();
         timeout.push(setTimeout(function() {
             markers[3].setMap(null);
         }, 10000));
