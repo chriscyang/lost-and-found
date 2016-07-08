@@ -15,6 +15,13 @@ $(document).ready(function() {
         $("li.tabs.tab-map").addClass("active");
         $(".body").hide();
         $("#map").show();
+
+        var center = map.getCenter();
+        if (group) {
+            center = group["centre"];
+        }
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
     });
 
     $(".tab-groups").click(function() {
