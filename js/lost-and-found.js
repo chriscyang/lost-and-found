@@ -1,74 +1,77 @@
-/**
- * Set the group here.
- */
-var group = groups["Downtown"];
+$(document).ready(function() {
 
-/**
- * Images for InfoWindows.
- */
-var ICON_PHONE = "<a href='dial.html'><img src='img/icon_phone.png'></a>";
-var ICON_PROFILE = "<a href='profile.html'><img src='img/icon_profile.png'></a>";
+    // -------------------------------------------------------------------------
+    // PAGE TRANSITIONS
+    // -------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------
-// HELPERS
-// -----------------------------------------------------------------------------
-
-function generateRandomNum(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-function generateRandomLoc(area) {
-    return {
-        lat : generateRandomNum(area["lat"]["min"], area["lat"]["max"]),
-        lng : generateRandomNum(area["lng"]["min"], area["lng"]["max"]),
-    };
-}
-
-function getMarkerIcon(name) {
-    if (name === "Me") {
-        return "http://maps.google.com/mapfiles/arrow.png";
-    } else {
-        return "https://www.google.com/mapfiles/marker" + name[0] + ".png";
-    }
-}
-
-// -----------------------------------------------------------------------------
-// MAP
-// -----------------------------------------------------------------------------
-
-function initMap() {
-    var openedInfoWindow;
-
-    function createGroupMember(name, area) {
-        var marker = new google.maps.Marker({
-            position : generateRandomLoc(area),
-            map      : map,
-            icon     : getMarkerIcon(name),
-            content  : "<p><b>" + name + "</b></p>" + ICON_PHONE + ICON_PROFILE,
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content : marker["content"],
-        });
-        marker.addListener("click", function() {
-            if (openedInfoWindow) {
-                openedInfoWindow.close();
-            }
-            infoWindow.open(map, marker);
-            openedInfoWindow = infoWindow;
-        });
-        console.log(name + " was placed at " + marker["position"] + ".");
-    };
-
-     var map = new google.maps.Map(document.getElementById("map"), {
-        center           : group["centre"],
-        zoom             : 14,
-        mapTypeId        : google.maps.MapTypeId.ROADMAP,
-        disableDefaultUI : true,
+    $("#tab-map").click(function() {
+        $(".tabs").removeClass("active");
+        $(this).addClass("active");
+        $(".body").hide();
+        $("#map").show();
     });
 
-    for (var i = 0; i < group["members"].length; ++i) {
-        createGroupMember(group["members"][i], group["area"]);
-    }
+    $("#tab-groups").click(function() {
+        $(".tabs").removeClass("active");
+        $(this).addClass("active");
+        $(".body").hide();
+        $("#groups").show();
+    });
+
+    $("#tab-profile").click(function() {
+        $(".tabs").removeClass("active");
+        $(this).addClass("active");
+        $(".body").hide();
+        $("#profile").show();
+    });
+
+    // -------------------------------------------------------------------------
+    // USER PROFILE
+    // -------------------------------------------------------------------------
+
+    $("#new-location").focus(function() {
+        return false;
+    });
+
+    $("#add-location").click(function() {
+        if ($("#new-location").val()) {
+            $("#locations").append("<h3>" + $("#new-location").val() + "</h3>");
+        } else {
+            $("#new-location").popover("show");
+            setTimeout(function() {
+                $("#new-location").popover("hide");
+            }, 1000);
+        }
+        $("#new-location").val("");
+    });
+
+    // -------------------------------------------------------------------------
+    // DIAL FRIEND
+    // -------------------------------------------------------------------------
+
+    $("#dial").click(function() {
+        $(this).hide();
+    });
+});
+
+// -----------------------------------------------------------------------------
+// FRIEND
+// -----------------------------------------------------------------------------
+
+function dialFriend() {
+    $("#dial").show();
 }
 
-google.maps.event.addDomListener(window, "load", initMap);
+function showFriend(name) {
+    $(".tabs").removeClass("active");
+    $(this).addClass("active");
+    $(".body").hide();
+    $("#friend").show();
+    $("#friend-name").html(name);
+    $("#friend-picture").initial({
+        name     : name,
+        width    : 200,
+        height   : 200,
+        fontSize : 80,
+    });
+}

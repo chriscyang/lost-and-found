@@ -14,7 +14,9 @@
         <script src="https://maps.googleapis.com/maps/api/js"></script>
         <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="js/initial.js"></script>
         <script src="js/var.js"></script>
+        <script src="js/map.js"></script>
         <script src="js/lost-and-found.js"></script>
     </head>
 
@@ -34,15 +36,63 @@
 
                 <div id="menu" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Map</a></li>
-                        <li><a href="groups.html">Groups</a></li>
-                        <li><a href="profile.html">Profile</a></li>
+                        <li id="tab-map" class="active tabs"><a href="#">Map</a></li>
+                        <li id="tab-groups" class="tabs"><a href="#">Groups</a></li>
+                        <li id="tab-profile" class="tabs"><a href="#">Profile</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         <!-- MAP -->
-        <div id="map"></div>
+        <div id="map" class="body"></div>
+
+        <!-- GROUPS -->
+        <div id="groups" class="body">
+        </div>
+
+        <!-- USER PROFILE -->
+        <div id="profile" class="body">
+
+            <!-- CONTACT -->
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1>Me</h1>
+                    <img id="profile-picture" class="img-circle" src="img/profile.png" />
+                    <h3>Phone: (604) 123-4567</h3>
+                </div>
+            </div>
+
+            <!-- SENSITIVE LOCATIONS -->
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1>Sensitive Locations</h1>
+                    <div>
+                        <div id="locations" class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="new-location" class="form-control" data-toggle="popover" data-content="Please enter a valid address." placeholder="Example: 2329 West Mall, Vancouver, BC" />
+                        </div>
+                    </div>
+                    <input type="button" id="add-location" class="btn btn-primary" value="Add Location" />
+                </div>
+            </div>
+        </div>
+
+        <!-- FRIEND PROFILE -->
+        <div id="friend" class="body">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <h1 id="friend-name"></h1>
+                    <img id="friend-picture" />
+                    <h3>Phone: (728) 123-4567</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAL FRIEND -->
+        <div id="dial" class="body">
+            <img id="dial-picture" src="img/phone.png" />
+        </div>
     </body>
 </html>
