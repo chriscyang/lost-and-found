@@ -51,7 +51,7 @@ $(document).ready(function() {
     $("#public").click(function() {
         clearOverlays();
         condition = "Public";
-        if ($("#profile")) {
+        if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
             $("#sensitive-locations").hide();
         }
@@ -65,7 +65,7 @@ $(document).ready(function() {
     $("#signal").click(function() {
         clearOverlays();
         condition = "Signal";
-        if ($("#profile")) {
+        if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
         reInitMap();
@@ -78,7 +78,7 @@ $(document).ready(function() {
     $("#no-signal").click(function() {
         clearOverlays();
         condition = "No Signal";
-        if ($("#profile")) {
+        if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
         reInitMap();
