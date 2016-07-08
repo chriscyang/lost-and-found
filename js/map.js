@@ -1,6 +1,9 @@
 // Set the group here
 var group = groups["Downtown"];
 
+var map;
+var markers = [];
+
 // -----------------------------------------------------------------------------
 // HELPERS
 // -----------------------------------------------------------------------------
@@ -22,6 +25,13 @@ function getMarkerIcon(name) {
     } else {
         return "https://www.google.com/mapfiles/marker" + name[0] + ".png";
     }
+}
+
+function clearOverlays() {
+    for (var i = 0; i < markers.length; ++i) {
+        markers[i].setMap(null);
+    }
+    markers.length = 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -48,6 +58,7 @@ function initMap() {
         var infoWindow = new google.maps.InfoWindow({
             content : marker["content"],
         });
+        markers.push(marker);
         marker.addListener("click", function() {
             if (openedInfoWindow) {
                 openedInfoWindow.close();
@@ -58,7 +69,7 @@ function initMap() {
         console.log(name + " was placed at " + marker["position"] + ".");
     };
 
-    var map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         center           : group["centre"],
         zoom             : 14,
         mapTypeId        : google.maps.MapTypeId.ROADMAP,
@@ -70,4 +81,40 @@ function initMap() {
     }
 }
 
-google.maps.event.addDomListener(window, "load", initMap);
+function reInitMap() {
+    var openedInfoWindow;
+
+    function createGroupMember(name, area) {
+        var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
+        var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
+        if (name === "Me") {
+            var content = "<h4>You</b></h4>";
+        } else {
+            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+        }
+        var marker = new google.maps.Marker({
+            position : generateRandomLoc(area),
+            map      : map,
+            icon     : getMarkerIcon(name),
+            content  : content,
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content : marker["content"],
+        });
+        markers.push(marker);
+        marker.addListener("click", function() {
+            if (openedInfoWindow) {
+                openedInfoWindow.close();
+            }
+            infoWindow.open(map, marker);
+            openedInfoWindow = infoWindow;
+        });
+        console.log(name + " was placed at " + marker["position"] + ".");
+    };
+
+    map.setCenter(group["centre"]);
+
+    for (var i = 0; i < group["members"].length; ++i) {
+        createGroupMember(group["members"][i], group["area"]);
+    }
+}

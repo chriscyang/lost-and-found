@@ -1,6 +1,17 @@
 $(document).ready(function() {
 
     // -------------------------------------------------------------------------
+    // MAP
+    // -------------------------------------------------------------------------
+
+    initMap();
+
+    $("#logo").click(function() {
+        clearOverlays();
+        reInitMap();
+    });
+
+    // -------------------------------------------------------------------------
     // PAGE TRANSITIONS
     // -------------------------------------------------------------------------
 
@@ -31,6 +42,22 @@ $(document).ready(function() {
 
     $("[data-toggle='collapse'").click(function() {
         $(".collapse").collapse("hide");
+    });
+
+    $(".friend > a").click(function() {
+        showFriend($(this).html());
+    });
+
+    $("#show-group1").click(function() {
+        clearOverlays();
+        group = groups["UBC"];
+        reInitMap();
+    });
+
+    $("#show-group2").click(function() {
+        clearOverlays();
+        group = groups["Downtown"];
+        reInitMap();
     });
 
     // -------------------------------------------------------------------------

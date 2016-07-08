@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Lost & Found</a>
+                    <a id="logo" class="navbar-brand" href="#">Lost & Found</a>
                 </div>
 
                 <div id="menu" class="collapse navbar-collapse">
@@ -60,11 +60,18 @@
                         </div>
                         <div id="group1" class="collapse panel-body">
                             <ul>
-                                <li>Brian</li>
-                                <li>Eric</li>
-                                <li>Lisa</li>
-                                <li>Jodie</li>
+                                <li class="friend"><a>Brian</a></li>
+                                <li class="friend"><a>Eric</a></li>
+                                <li class="friend"><a>Lisa</a></li>
+                                <li class="friend"><a>Jodie</a></li>
                             </ul>
+
+                            <div class="text-center">
+                                <div class="btn-group">
+                                    <input type="button" id="show-group1" class="btn btn-primary" value="Show on Map" />
+                                    <input type="button" class="btn btn-primary" value="Leave Group" disabled />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -75,14 +82,21 @@
                         </div>
                         <div id="group2" class="collapse panel-body">
                             <ul>
-                                <li>Adam</li>
-                                <li>Calvin</li>
-                                <li>Dexter</li>
-                                <li>Frank</li>
-                                <li>Kat</li>
-                                <li>Michelle</li>
-                                <li>Norah</li>
+                                <li class="friend"><a>Adam</a></li>
+                                <li class="friend"><a>Calvin</a></li>
+                                <li class="friend"><a>Dexter</a></li>
+                                <li class="friend"><a>Frank</a></li>
+                                <li class="friend"><a>Kat</a></li>
+                                <li class="friend"><a>Michelle</a></li>
+                                <li class="friend"><a>Norah</a></li>
                             </ul>
+
+                            <div class="text-center">
+                                <div class="btn-group">
+                                    <input type="button" id="show-group2" class="btn btn-primary" value="Show on Map" />
+                                    <input type="button" class="btn btn-primary" value="Leave Group" disabled />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -93,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="button" id="add-group" class="btn btn-primary btn-lg center-block" value="Add Group" />
+                <input type="button" class="btn btn-primary btn-lg center-block" value="Add Group" />
             </div>
 
             <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />
