@@ -44,7 +44,11 @@ function initMap() {
     function createGroupMember(name, area) {
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
-        var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+        if (name === "User") {
+            var content = "<p><h4>" + name + "</h4></p>";
+        } else {
+            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+        }
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
             map      : map,
@@ -87,7 +91,11 @@ function reInitMap() {
     function createGroupMember(name, area) {
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
-        var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+        if (name === "User") {
+            var content = "<p><h4>" + name + "</h4></p>";
+        } else {
+            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+        }
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
             map      : map,
