@@ -8,6 +8,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css">
         <link rel="stylesheet" href="css/lost-and-found.css">
 
         <!-- JS -->
@@ -36,9 +37,9 @@
 
                 <div id="menu" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li id="tab-map" class="active tabs"><a href="#">Map</a></li>
-                        <li id="tab-groups" class="tabs"><a href="#">Groups</a></li>
-                        <li id="tab-profile" class="tabs"><a href="#">Profile</a></li>
+                        <li class="active tabs tab-map"><a href="#">Map</a></li>
+                        <li class="tabs tab-groups"><a href="#">Groups</a></li>
+                        <li class="tabs tab-profile"><a href="#">Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,6 +50,52 @@
 
         <!-- GROUPS -->
         <div id="groups" class="body">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+
+                    <!-- GROUP 1 -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" data-toggle="collapse" data-target="#group1">
+                            <h4>UBC Block Party <i class="em em-guitar"></i></h4>
+                        </div>
+                        <div id="group1" class="collapse panel-body">
+                            <ul>
+                                <li>Brian</li>
+                                <li>Eric</li>
+                                <li>Lisa</li>
+                                <li>Jodie</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- GROUP 2 -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" data-toggle="collapse" data-target="#group2">
+                            <h4>Friday Night! Woohoo! <i class="em em-beers"></i></h4>
+                        </div>
+                        <div id="group2" class="collapse panel-body">
+                            <ul>
+                                <li>Adam</li>
+                                <li>Calvin</li>
+                                <li>Dexter</li>
+                                <li>Frank</li>
+                                <li>Kat</li>
+                                <li>Michelle</li>
+                                <li>Norah</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- GROUP 3 -->
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            <h4>Fright Night (Inactive) <i class="em em-ghost"></i></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />
+            </div>
         </div>
 
         <!-- USER PROFILE -->
@@ -74,9 +121,11 @@
                             <input type="text" id="new-location" class="form-control" data-toggle="popover" data-content="Please enter a valid address." placeholder="Example: 2329 West Mall, Vancouver, BC" />
                         </div>
                     </div>
-                    <input type="button" id="add-location" class="btn btn-primary" value="Add Location" />
+                    <input type="button" id="add-location" class="btn btn-primary btn-lg" value="Add Location" />
                 </div>
             </div>
+
+            <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />
         </div>
 
         <!-- FRIEND PROFILE -->
@@ -87,6 +136,8 @@
                     <img id="friend-picture" />
                     <h3>Phone: (728) 123-4567</h3>
                 </div>
+
+                <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />
             </div>
         </div>
 

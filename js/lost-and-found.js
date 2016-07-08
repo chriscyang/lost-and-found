@@ -4,25 +4,33 @@ $(document).ready(function() {
     // PAGE TRANSITIONS
     // -------------------------------------------------------------------------
 
-    $("#tab-map").click(function() {
+    $(".tab-map").click(function() {
         $(".tabs").removeClass("active");
         $(this).addClass("active");
         $(".body").hide();
         $("#map").show();
     });
 
-    $("#tab-groups").click(function() {
+    $(".tab-groups").click(function() {
         $(".tabs").removeClass("active");
         $(this).addClass("active");
         $(".body").hide();
         $("#groups").show();
     });
 
-    $("#tab-profile").click(function() {
+    $(".tab-profile").click(function() {
         $(".tabs").removeClass("active");
         $(this).addClass("active");
         $(".body").hide();
         $("#profile").show();
+    });
+
+    // -------------------------------------------------------------------------
+    // GROUPS
+    // -------------------------------------------------------------------------
+
+    $("[data-toggle='collapse'").click(function() {
+        $(".collapse").collapse("hide");
     });
 
     // -------------------------------------------------------------------------
@@ -31,6 +39,10 @@ $(document).ready(function() {
 
     $("#new-location").focus(function() {
         return false;
+    });
+
+    $("#new-location").popover({
+        placement : "top",
     });
 
     $("#add-location").click(function() {
