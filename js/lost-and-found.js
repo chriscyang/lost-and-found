@@ -7,13 +7,8 @@ $(document).ready(function() {
     initMap();
 
     // -------------------------------------------------------------------------
-    // NAVBAR MENU
+    // NAVBAR
     // -------------------------------------------------------------------------
-
-     $("#logo").click(function() {
-        clearOverlays();
-        reInitMap();
-    });
 
     $(".tab-map").click(function() {
         $(".tabs").removeClass("active");
@@ -40,60 +35,19 @@ $(document).ready(function() {
     });
 
     $(".tab-conditions").click(function() {
-        if (!$(this).hasClass("active")) {
-            $(".tabs").removeClass("active");
-            $("li.tabs.tab-conditions").addClass("active");
-        } else {
-            $(".tabs").removeClass("active");
-        }
+        $("#modal-conditions").modal("show");
     });
 
-    $("#public").click(function() {
-        clearTimeout(timeout);
-        timeout = [];
+    $(".tab-refresh").click(function() {
         clearOverlays();
-        condition = "Public";
-        if ($("#profile").is(":visible")) {
-            $(".tab-profile").click();
-            $("#sensitive-locations").hide();
-        }
         reInitMap();
-    });
-
-    $("#signal").click(function() {
-        clearTimeout(timeout);
-        timeout = [];
-        clearOverlays();
-        condition = "Signal";
-        if ($("#profile").is(":visible")) {
-            $(".tab-profile").click();
-        }
-        reInitMap();
-        timeout.push(setTimeout(function() {
-            markers[3].setMap(null);
-            alert(markers[3]["name"] + " has gone near a sensitive location.");
-        }, 10000));
-    });
-
-    $("#no-signal").click(function() {
-        clearTimeout(timeout);
-        timeout = [];
-        clearOverlays();
-        condition = "No Signal";
-        if ($("#profile").is(":visible")) {
-            $(".tab-profile").click();
-        }
-        reInitMap();
-        timeout.push(setTimeout(function() {
-            markers[3].setMap(null);
-        }, 10000));
     });
 
     // -------------------------------------------------------------------------
     // GROUPS
     // -------------------------------------------------------------------------
 
-    $("[data-toggle='collapse']").click(function() {
+    $("[data-toggle=collapse]").click(function() {
         $(".collapse").collapse("hide");
     });
 
@@ -172,6 +126,69 @@ $(document).ready(function() {
         }
         $("#new-location").val("");
     });
+
+    // -------------------------------------------------------------------------
+    // CONDITIONS
+    // -------------------------------------------------------------------------
+
+    $("input[value=Save]").click(function() {
+        var selectedCondition = $("input[name=condition]:checked").val();
+        switch (selectedCondition) {
+            case "Public":
+                public();
+                break;
+            case "Signal":
+                signal();
+                break;
+            case "No Signal":
+                noSignal();
+                break;
+            default:
+                break;
+        }
+        $("#modal-conditions").modal("hide");
+    });
+
+    function public() {
+        clearTimeout(timeout);
+        timeout = [];
+        clearOverlays();
+        condition = "Public";
+        if ($("#profile").is(":visible")) {
+            $(".tab-profile").click();
+            $("#sensitive-locations").hide();
+        }
+        reInitMap();
+    }
+
+    function signal() {
+        clearTimeout(timeout);
+        timeout = [];
+        clearOverlays();
+        condition = "Signal";
+        if ($("#profile").is(":visible")) {
+            $(".tab-profile").click();
+        }
+        reInitMap();
+        timeout.push(setTimeout(function() {
+            markers[3].setMap(null);
+            alert(markers[3]["name"] + " has gone near a sensitive location.");
+        }, 10000));
+    }
+
+    function noSignal() {
+        clearTimeout(timeout);
+        timeout = [];
+        clearOverlays();
+        condition = "No Signal";
+        if ($("#profile").is(":visible")) {
+            $(".tab-profile").click();
+        }
+        reInitMap();
+        timeout.push(setTimeout(function() {
+            markers[3].setMap(null);
+        }, 10000));
+    }
 
     // -------------------------------------------------------------------------
     // DIAL FRIEND

@@ -7,8 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/lost-and-found.css">
 
         <!-- JS -->
@@ -26,30 +27,13 @@
         <!-- NAVBAR -->
         <nav id="navbar" class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" id="menu-toggle" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a id="logo" class="navbar-brand" href="#">Lost & Found</a>
-                </div>
-
-                <div id="menu" class="collapse navbar-collapse">
+                <div id="menu">
                     <ul class="nav navbar-nav">
                         <li class="active tabs tab-map"><a href="#">Map</a></li>
                         <li class="tabs tab-groups"><a href="#">Groups</a></li>
                         <li class="tabs tab-profile"><a href="#">Profile</a></li>
-                        <li class="dropdown tabs tab-conditions">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Conditions<span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li id="public" class="condition"><a href="#">Public</a></li>
-                                <li id="signal" class="condition"><a href="#">Signal</a></li>
-                                <li id="no-signal" class="condition"><a href="#">No Signal</a></li>
-                            </ul>
-                        </li>
+                        <li class="tabs tab-conditions"><a href="#"><i class="small material-icons">settings</i></a></li>
+                        <li class="tabs tab-refresh"><a href="#"><i class="small material-icons">cached</i></a></li>
                     </ul>
                 </div>
             </div>
@@ -166,6 +150,33 @@
         <!-- DIAL FRIEND -->
         <div id="dial" class="body">
             <img id="dial-picture" src="img/phone.png" />
+        </div>
+
+        <!-- CONDITIONS -->
+        <div id="modal-conditions" class="modal fade" tab-index="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                        <h4 class="modal-title">Condition</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="Public" /> Public
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="Signal" /> Signal
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="condition" value="No Signal" /> No Signal
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                        <input type="button" class="btn btn-default" value="Save" />
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
