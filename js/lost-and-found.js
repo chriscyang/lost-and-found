@@ -6,21 +6,21 @@ $(document).ready(function() {
 
     $(".tab-map").click(function() {
         $(".tabs").removeClass("active");
-        $(this).addClass("active");
+        $("li.tabs.tab-map").addClass("active");
         $(".body").hide();
         $("#map").show();
     });
 
     $(".tab-groups").click(function() {
         $(".tabs").removeClass("active");
-        $(this).addClass("active");
+        $("li.tabs.tab-groups").addClass("active");
         $(".body").hide();
         $("#groups").show();
     });
 
     $(".tab-profile").click(function() {
         $(".tabs").removeClass("active");
-        $(this).addClass("active");
+        $("li.tabs.tab-profile").addClass("active");
         $(".body").hide();
         $("#profile").show();
     });
