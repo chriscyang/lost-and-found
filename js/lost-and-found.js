@@ -111,18 +111,12 @@ $(document).ready(function() {
         return false;
     });
 
-    $("#new-location").popover({
-        placement : "top",
-    });
-
     $("#add-location").click(function() {
         if ($("#new-location").val()) {
+            $("#new-location").parent().removeClass("has-error");
             $("#locations").append("<p>" + $("#new-location").val() + "</p>");
         } else {
-            $("#new-location").popover("show");
-            setTimeout(function() {
-                $("#new-location").popover("hide");
-            }, 1000);
+            $("#new-location").parent().addClass("has-error");
         }
         $("#new-location").val("");
     });
