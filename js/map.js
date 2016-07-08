@@ -42,7 +42,7 @@ function clearOverlays() {
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center           : groups["UBC"]["centre"],
-        zoom             : 14,
+        zoom             : 13,
         mapTypeId        : google.maps.MapTypeId.ROADMAP,
         disableDefaultUI : true,
     });
