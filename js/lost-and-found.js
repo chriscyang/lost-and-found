@@ -34,6 +34,9 @@ $(document).ready(function() {
         $("li.tabs.tab-profile").addClass("active");
         $(".body").hide();
         $("#profile").show();
+        if (condition != "Public") {
+            $("#sensitive-locations").show();
+        }
     });
 
     $(".tab-conditions").click(function() {
@@ -48,12 +51,23 @@ $(document).ready(function() {
     $("#public").click(function() {
         clearOverlays();
         condition = "Public";
+        if ($("#profile")) {
+            $(".tab-profile").click();
+            $("#sensitive-locations").hide();
+        }
         reInitMap();
+        var id = window.setTimeout(function() {}, 0);
+        while (id--) {
+            window.clearTimeout(id);
+        }
     });
 
     $("#signal").click(function() {
         clearOverlays();
         condition = "Signal";
+        if ($("#profile")) {
+            $(".tab-profile").click();
+        }
         reInitMap();
         setTimeout(function() {
             markers[3].setMap(null);
@@ -64,6 +78,9 @@ $(document).ready(function() {
     $("#no-signal").click(function() {
         clearOverlays();
         condition = "No Signal";
+        if ($("#profile")) {
+            $(".tab-profile").click();
+        }
         reInitMap();
         setTimeout(function() {
             markers[3].setMap(null);

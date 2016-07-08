@@ -70,6 +70,10 @@
     height: 120px;
 }
 
+#sensitive-locations {
+    display: none;
+}
+
 #friend {
     display: none;
 
