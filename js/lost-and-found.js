@@ -200,7 +200,7 @@ $(document).ready(function() {
             timeout.push(setTimeout(function() {
                 markers[3].setMap(null);
                 alert(markers[3]["name"] + " has gone near a sensitive location.");
-            }, 10000));
+            }, 5000));
         }
     }
 
@@ -216,7 +216,7 @@ $(document).ready(function() {
             initGroup();
             timeout.push(setTimeout(function() {
                 markers[3].setMap(null);
-            }, 10000));
+            }, 5000));
         }
     }
 
