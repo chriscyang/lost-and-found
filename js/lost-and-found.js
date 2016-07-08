@@ -83,11 +83,6 @@ $(document).ready(function() {
     });
 
     $("#show-group1").click(function() {
-        console.log("Switching to Group 1 ...");
-        clearOverlays();
-        group = groups["UBC"];
-        reInitMap();
-        $(".tab-map").click();
         if ($("#group1").hasClass("panel-warning")) {
             $("#group2").removeClass("panel-primary");
             $("#group2").addClass("panel-warning");
@@ -100,15 +95,18 @@ $(document).ready(function() {
             $("#status-group1").removeClass("btn-warning");
             $("#status-group1").addClass("btn-info");
             $("#status-group1").html("Active");
+
+            console.log("Switching to Group 1 ...");
+            clearOverlays();
+            group = groups["UBC"];
+            reInitMap();
+            $(".tab-map").click();
+        } else {
+            $(".tab-map").click();
         }
     });
 
     $("#show-group2").click(function() {
-        console.log("Switching to Group 2 ...");
-        clearOverlays();
-        group = groups["Downtown"];
-        reInitMap();
-        $(".tab-map").click();
         if ($("#group2").hasClass("panel-warning")) {
             $("#group1").removeClass("panel-primary");
             $("#group1").addClass("panel-warning");
@@ -121,6 +119,14 @@ $(document).ready(function() {
             $("#status-group2").removeClass("btn-warning");
             $("#status-group2").addClass("btn-info");
             $("#status-group2").html("Active");
+
+            console.log("Switching to Group 2 ...");
+            clearOverlays();
+            group = groups["Downtown"];
+            reInitMap();
+            $(".tab-map").click();
+        } else {
+            $(".tab-map").click();
         }
     });
 
