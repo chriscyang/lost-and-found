@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Lost & Found</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Lost & Found</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="map.html">Map <span class="sr-only">(current)</span></a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+        <form >
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search For Location">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Search</button>
+            </span>
+            </div>
+        <!-- /input-group -->
+        <br>
+</form>
+
+<div id="googleMap" style="position: absolute; top:10px; left:0; bottom:0; right:0; z-index:-1"></div>
+
+
+
+    <script src="http://maps.googleapis.com/maps/api/js">
+    </script>
+
+
+    <script>
+
+    function generateRandomNumber(min, max) {
+    var rand_number = Math.random() * (max - min) + min;
+
+        return rand_number;
+
+    };
+    //Within UBC
+    var from_UBC_LAT = 49.279508,
+        to_UBC_LAT = 49.250336,
+        from_UBC_LNG = -123.260821,
+        to_UBC_LNG = -123.233212;
+
+    //Within DownTown Van
+    var to_down_LAT = 49.272071,
+        from_down_LAT = 49.290619,
+        from_down_LNG = -123.143484,
+        to_down_LNG = -123.094494;
+
+    var LAND_LAT = generateRandomNumber(from_UBC_LAT,to_UBC_LAT);
+    var LAND_LNG = generateRandomNumber(from_UBC_LNG, to_UBC_LNG);
+
+    	function initialize() {
+
+            //Set pointer location
+           var land_location = {lat: LAND_LAT, lng: LAND_LNG};
+           var friend_location = {lat: generateRandomNumber(from_UBC_LAT,to_UBC_LAT),
+                                    lng: generateRandomNumber(from_UBC_LNG,to_UBC_LNG)};
+            var other_friend_location = {lat: generateRandomNumber(from_UBC_LAT,to_UBC_LAT),
+                                     lng: generateRandomNumber(from_UBC_LNG,to_UBC_LNG)};
+
+            var down_friend_location = {lat: generateRandomNumber(from_down_LAT,to_down_LAT),
+                                lng: generateRandomNumber(from_down_LNG,to_down_LNG)};
+
+
+    	   var mapProp = {
+        	   center:new google.maps.LatLng(LAND_LAT,LAND_LNG),
+        	   zoom:16,
+        	   mapTypeId:google.maps.MapTypeId.ROADMAP
+    	   };
+
+          var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+          //Create pointer
+          var touchdownPoint = new google.maps.Marker({
+            position: land_location,
+            map: map,
+          });
+
+          var friend_touchdownPoint = new google.maps.Marker({
+            position: friend_location,
+            map:map,
+            icon: 'https://www.google.com/mapfiles/marker_green.png',
+          });
+
+          var other_friend_touchdownPoint = new google.maps.Marker({
+            position: other_friend_location,
+            map:map,
+            icon: 'https://www.google.com/mapfiles/marker_green.png',
+          });
+
+          var down_friend_touchdownPoint = new google.maps.Marker({
+            position: down_friend_location,
+            map:map,
+            icon: 'https://www.google.com/mapfiles/marker_green.png',
+          });
+
+
+/*
+          down_friend_touchdownPoint.addListner('click', function() {
+              infowindow.open(map, down_friend_touchdownPoint);
+          });
+*/
+
+          //Set point down
+          touchdownPoint.setMap(map);
+          friend_touchdownPoint.setMap(map);
+          other_friend_touchdownPoint.setMap(map);
+          down_friend_touchdownPoint.setMap(map);
+
+
+          // Popup for map pins - Content
+          var touchdownInfo = new google.maps.InfoWindow({
+            content:
+              "<p><b>Mary Poppins</b></p>" +
+              "<a target='_blank' href = dial.html><img src=image/call.png></a> " + "&nbsp;&nbsp;&nbsp;" +
+              "<a href = profile.html><img src=image/profile.png></a>"
+          });
+
+          var friend_touchdownInfo = new google.maps.InfoWindow({
+            content:
+              "<p><b>Bobby Tables</b></p>" +
+              "<a target='_blank' href = dial.html><img src=image/call.png></a> " + "&nbsp;&nbsp;&nbsp;" +
+              "<a href = profile.html><img src=image/profile.png></a>"
+          });
+
+          var other_touchdownInfo = new google.maps.InfoWindow({
+            content:
+              "<p><b>William Shakes</b></p>" +
+              "<a target='_blank' href = dial.html><img src=image/call.png></a> " + "&nbsp;&nbsp;&nbsp;" +
+              "<a href = profile.html><img src=image/profile.png></a>"
+          });
+
+          var global_touch = touchdownInfo;
+
+          touchdownPoint.addListener('click', function() {
+              global_touch.close();
+                touchdownInfo.open(map, touchdownPoint);
+                global_touch = touchdownInfo;
+            });
+
+            friend_touchdownPoint.addListener('click', function() {
+                global_touch.close();
+                  friend_touchdownInfo.open(map, friend_touchdownPoint);
+                  global_touch = friend_touchdownInfo;
+              });
+              other_friend_touchdownPoint.addListener('click', function() {
+                  global_touch.close();
+                    other_touchdownInfo.open(map, other_friend_touchdownPoint);
+                    global_touch = other_touchdownInfo;
+                });
+              down_friend_touchdownPoint.addListener('click', function() {
+                  global_touch.close();
+                    touchdownInfo.open(map, down_friend_touchdownPoint);
+                    global_touch = touchdownInfo;
+
+                });
+
+          //touchdownInfo.open(map,touchdownPoint);
+    	}
+
+    	google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
