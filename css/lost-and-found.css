@@ -37,6 +37,10 @@
 /* BODY
 /* -------------------------------------------------------------------------- */
 
+.modal-open {
+    overflow-y: auto;
+}
+
 #map {
     position: absolute;
     z-index: -1;
