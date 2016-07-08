@@ -49,6 +49,8 @@ $(document).ready(function() {
     });
 
     $("#public").click(function() {
+        clearTimeout(timeout);
+        timeout = [];
         clearOverlays();
         condition = "Public";
         if ($("#profile").is(":visible")) {
@@ -56,35 +58,35 @@ $(document).ready(function() {
             $("#sensitive-locations").hide();
         }
         reInitMap();
-        var id = window.setTimeout(function() {}, 0);
-        while (id--) {
-            window.clearTimeout(id);
-        }
     });
 
     $("#signal").click(function() {
+        clearTimeout(timeout);
+        timeout = [];
         clearOverlays();
         condition = "Signal";
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
         reInitMap();
-        setTimeout(function() {
+        timeout.push(setTimeout(function() {
             markers[3].setMap(null);
             alert(markers[3]["name"] + " has gone near a sensitive location.");
-        }, 20000);
+        }, 10000));
     });
 
     $("#no-signal").click(function() {
+        clearTimeout(timeout);
+        timeout = [];
         clearOverlays();
         condition = "No Signal";
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
         reInitMap();
-        setTimeout(function() {
+        timeout.push(setTimeout(function() {
             markers[3].setMap(null);
-        }, 20000);
+        }, 10000));
     });
 
     // -------------------------------------------------------------------------

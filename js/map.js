@@ -1,5 +1,6 @@
 var group = groups["UBC"];
 var condition = "Public";
+var timeout;
 
 var map;
 var markers = [];
