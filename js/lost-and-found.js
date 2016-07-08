@@ -177,13 +177,17 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        condition = "Public";
+        if (condition != "Public") {
+            condition = "Public";
+            $("#locations").html("");
+        }
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
             $("#sensitive-locations").hide();
         }
         if (group) {
             initGroup();
+
         }
     }
 
@@ -191,7 +195,10 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        condition = "Signal";
+        if (condition != "Signal") {
+            condition = "Signal";
+            $("#locations").html("");
+        }
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
@@ -208,7 +215,10 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        condition = "Private";
+        if (condition != "Private") {
+            condition = "Private";
+            $("#locations").html("");
+        }
         if ($("#profile").is(":visible")) {
             $(".tab-profile").click();
         }
