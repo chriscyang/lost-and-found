@@ -39,8 +39,12 @@ $(document).ready(function() {
     });
 
     $(".tab-refresh").click(function() {
-        clearOverlays();
-        reInitMap();
+        if (confirm("Are you sure you want to refresh the map?")) {
+            clearOverlays();
+            reInitMap();
+        } else {
+            return false;
+        }
     });
 
     // -------------------------------------------------------------------------
