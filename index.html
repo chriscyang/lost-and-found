@@ -64,18 +64,18 @@
                 <div class="col-md-10 col-md-offset-1">
 
                     <!-- GROUP 1 -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#group1">
-                            <h4>UBC Block Party <i class="em em-guitar"></i></h4>
+                    <div id="group1" class="panel panel-primary">
+                        <div class="panel-heading clearfix" data-toggle="collapse" data-target="#listing-group1">
+                            <h4 class="pull-left">UBC Block Party <i class="em em-guitar"></i></h4>
+                            <div id="status-group1" class="btn btn-info pull-right">Active</div>
                         </div>
-                        <div id="group1" class="collapse panel-body">
+                        <div id="listing-group1" class="collapse panel-body">
                             <ul>
                                 <li class="friend"><a>Brian</a></li>
                                 <li class="friend"><a>Eric</a></li>
                                 <li class="friend"><a>Lisa</a></li>
                                 <li class="friend"><a>Jodie</a></li>
                             </ul>
-
                             <div class="text-center">
                                 <div class="btn-group">
                                     <input type="button" id="show-group1" class="btn btn-primary" value="Show on Map" />
@@ -86,11 +86,12 @@
                     </div>
 
                     <!-- GROUP 2 -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" data-toggle="collapse" data-target="#group2">
-                            <h4>Friday Night! Woohoo! <i class="em em-beers"></i></h4>
+                    <div id="group2" class="panel panel-warning">
+                        <div class="panel-heading clearfix" data-toggle="collapse" data-target="#listing-group2">
+                            <h4 class="pull-left">Friday Night! Woohoo! <i class="em em-beers"></i></h4>
+                            <div id="status-group2" class="btn btn-warning pull-right">Inactive</div>
                         </div>
-                        <div id="group2" class="collapse panel-body">
+                        <div id="listing-group2" class="collapse panel-body">
                             <ul>
                                 <li class="friend"><a>Adam</a></li>
                                 <li class="friend"><a>Calvin</a></li>
@@ -100,7 +101,6 @@
                                 <li class="friend"><a>Michelle</a></li>
                                 <li class="friend"><a>Norah</a></li>
                             </ul>
-
                             <div class="text-center">
                                 <div class="btn-group">
                                     <input type="button" id="show-group2" class="btn btn-primary" value="Show on Map" />
@@ -112,12 +112,13 @@
 
                     <!-- GROUP 3 -->
                     <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <h4>Fright Night (Inactive) <i class="em em-ghost"></i></h4>
+                        <div class="panel-heading clearfix">
+                            <h4 class="pull-left">Fright Night <i class="em em-ghost"></i></h4>
+                            <div id="status-group3" class="btn btn-danger pull-right">Expired</div>
                         </div>
                     </div>
                 </div>
-                <input type="button" class="btn btn-primary btn-lg center-block" value="Add Group" />
+                <input type="button" class="btn btn-primary btn-lg center-block" value="Add Group" disabled />
             </div>
 
             <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />

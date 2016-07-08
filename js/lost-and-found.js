@@ -74,7 +74,7 @@ $(document).ready(function() {
     // GROUPS
     // -------------------------------------------------------------------------
 
-    $("[data-toggle='collapse'").click(function() {
+    $("[data-toggle='collapse']").click(function() {
         $(".collapse").collapse("hide");
     });
 
@@ -83,17 +83,45 @@ $(document).ready(function() {
     });
 
     $("#show-group1").click(function() {
+        console.log("Switching to Group 1 ...");
         clearOverlays();
         group = groups["UBC"];
         reInitMap();
         $(".tab-map").click();
+        if ($("#group1").hasClass("panel-warning")) {
+            $("#group2").removeClass("panel-primary");
+            $("#group2").addClass("panel-warning");
+            $("#status-group2").removeClass("btn-info");
+            $("#status-group2").addClass("btn-warning");
+            $("#status-group2").html("Inactive");
+
+            $("#group1").removeClass("panel-warning");
+            $("#group1").addClass("panel-primary");
+            $("#status-group1").removeClass("btn-warning");
+            $("#status-group1").addClass("btn-info");
+            $("#status-group1").html("Active");
+        }
     });
 
     $("#show-group2").click(function() {
+        console.log("Switching to Group 2 ...");
         clearOverlays();
         group = groups["Downtown"];
         reInitMap();
         $(".tab-map").click();
+        if ($("#group2").hasClass("panel-warning")) {
+            $("#group1").removeClass("panel-primary");
+            $("#group1").addClass("panel-warning");
+            $("#status-group1").removeClass("btn-info");
+            $("#status-group1").addClass("btn-warning");
+            $("#status-group1").html("Inactive");
+
+            $("#group2").removeClass("panel-warning");
+            $("#group2").addClass("panel-primary");
+            $("#status-group2").removeClass("btn-warning");
+            $("#status-group2").addClass("btn-info");
+            $("#status-group2").html("Active");
+        }
     });
 
     // -------------------------------------------------------------------------
