@@ -51,7 +51,7 @@ $(document).ready(function() {
     // GROUPS
     // -------------------------------------------------------------------------
 
-    $("[data-toggle=collapse]").click(function() {
+    $("[data-toggle='collapse']").click(function() {
         $(".collapse").collapse("hide");
     });
 
@@ -118,7 +118,12 @@ $(document).ready(function() {
     $("#add-location").click(function() {
         if ($("#new-location").val()) {
             $("#new-location").parent().removeClass("has-error");
-            $("#locations").append("<p>" + $("#new-location").val() + "</p>");
+            $("#locations").append("<li class='list-group-item clearfix'>" +
+                                   "<label class='location pull-left'>" + $("#new-location").val() + "</label>" +
+                                   "<label class='pull-right'>" +
+                                   "<span class='edit-location'>Edit</span> | " +
+                                   "<span class='delete-location'>Delete</span> " +
+                                   "</label></li>");
         } else {
             $("#new-location").parent().addClass("has-error");
         }
@@ -136,15 +141,15 @@ $(document).ready(function() {
     });
 
     if (condition === "Public") {
-        $("input:radio[value=Public]").attr("checked", "checked");
+        $("input:radio[value='Public']").attr("checked", "checked");
     } else if (condition === "Signal") {
-        $("input:radio[value=Signal]").attr("checked", "checked");
+        $("input:radio[value='Signal']").attr("checked", "checked");
     } else if (condition === "Private") {
-        $("input:radio[value=Private]").attr("checked", "checked");
+        $("input:radio[value='Private']").attr("checked", "checked");
     }
 
-    $("input[value=Save]").click(function() {
-        var selectedCondition = $("input[name=condition]:checked").val();
+    $("input[value='Save']").click(function() {
+        var selectedCondition = $("input[name='condition']:checked").val();
         switch (selectedCondition) {
             case "Public":
                 public();
@@ -185,11 +190,11 @@ $(document).ready(function() {
         }
         if (group) {
             initGroup();
+            timeout.push(setTimeout(function() {
+                markers[3].setMap(null);
+                alert(markers[3]["name"] + " has gone near a sensitive location.");
+            }, 10000));
         }
-        timeout.push(setTimeout(function() {
-            markers[3].setMap(null);
-            alert(markers[3]["name"] + " has gone near a sensitive location.");
-        }, 10000));
     }
 
     function private() {
@@ -202,10 +207,10 @@ $(document).ready(function() {
         }
         if (group) {
             initGroup();
+            timeout.push(setTimeout(function() {
+                markers[3].setMap(null);
+            }, 10000));
         }
-        timeout.push(setTimeout(function() {
-            markers[3].setMap(null);
-        }, 10000));
     }
 
     // -------------------------------------------------------------------------
