@@ -86,12 +86,14 @@ $(document).ready(function() {
         clearOverlays();
         group = groups["UBC"];
         reInitMap();
+        $(".tab-map").click();
     });
 
     $("#show-group2").click(function() {
         clearOverlays();
         group = groups["Downtown"];
         reInitMap();
+        $(".tab-map").click();
     });
 
     // -------------------------------------------------------------------------
