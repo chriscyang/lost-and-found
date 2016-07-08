@@ -35,9 +35,9 @@ function initMap() {
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
         if (name === "Me") {
-            var content = "<p><b>You</b></p>";
+            var content = "<h4>You</b></h4>";
         } else {
-            var content = "<p><b>" + name + "</b></p>" + phone + profile;
+            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
         }
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
