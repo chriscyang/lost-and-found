@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+    <!-- TITLE -->
     <title>Lost & Found</title>
 
     <!-- CSS -->
@@ -15,178 +16,210 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css">
-    <link rel="stylesheet" href="css/lost-and-found.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
     <!-- NAVBAR -->
-    <nav id="navbar" class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div id="menu">
-                <ul class="nav navbar-nav">
-                    <li class="active tabs tab-map"><a href="#">Map</a></li>
-                    <li class="tabs tab-groups"><a href="#">Groups</a></li>
-                    <li class="tabs tab-profile"><a href="#">Profile</a></li>
-                    <li class="tabs tab-conditions"><a href="#"><i class="material-icons md-12">settings</i></a></li>
-                    <li class="tabs tab-refresh"><a href="#"><i class="material-icons md-12">cached</i></a></li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a data-toggle="tab" href="#map">Map</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#groups">Groups</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#profile">Profile</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a data-toggle="modal" href="#conditions">
+                        <i class="material-icons">settings</i>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" href="#refresh">
+                        <i class="material-icons">cached</i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <!-- MAP -->
-    <div id="map" class="body"></div>
+    <div class="tab-content">
 
-    <!-- GROUPS -->
-    <div id="groups" class="body">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+        <!-- MAP -->
+        <div class="tab-pane tab-pane-full active" id="map"></div>
 
-                <!-- GROUP 1 -->
-                <div id="group1" class="panel panel-warning">
-                    <div class="panel-heading clearfix" data-toggle="collapse" data-target="#listing-group1">
-                        <h4 class="pull-left">UBC Block Party <i class="em em-guitar"></i></h4>
-                        <div id="status-group1" class="btn btn-warning pull-right">Inactive</div>
-                    </div>
-                    <div id="listing-group1" class="collapse panel-body">
-                        <ul>
-                            <li class="friend"><a>Brian</a></li>
-                            <li class="friend"><a>Eric</a></li>
-                            <li class="friend"><a>Lisa</a></li>
-                            <li class="friend"><a>Jodie</a></li>
-                        </ul>
-                        <div class="text-center">
-                            <div class="btn-group">
-                                <input type="button" id="show-group1" class="btn btn-primary" value="Switch to This Group" />
-                                <input type="button" class="btn btn-primary" value="Leave This Group" disabled />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GROUP 2 -->
-                <div id="group2" class="panel panel-warning">
-                    <div class="panel-heading clearfix" data-toggle="collapse" data-target="#listing-group2">
-                        <h4 class="pull-left">Friday Night! Woohoo! <i class="em em-beers"></i></h4>
-                        <div id="status-group2" class="btn btn-warning pull-right">Inactive</div>
-                    </div>
-                    <div id="listing-group2" class="collapse panel-body">
-                        <ul>
-                            <li class="friend"><a>Adam</a></li>
-                            <li class="friend"><a>Calvin</a></li>
-                            <li class="friend"><a>Dexter</a></li>
-                            <li class="friend"><a>Frank</a></li>
-                            <li class="friend"><a>Kat</a></li>
-                            <li class="friend"><a>Michelle</a></li>
-                            <li class="friend"><a>Norah</a></li>
-                        </ul>
-                        <div class="text-center">
-                            <div class="btn-group">
-                                <input type="button" id="show-group2" class="btn btn-primary" value="Switch to This Group" />
-                                <input type="button" class="btn btn-primary" value="Leave This Group" disabled />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GROUP 3 -->
-                <div class="panel panel-danger">
-                    <div class="panel-heading clearfix">
-                        <h4 class="pull-left">Fright Night <i class="em em-ghost"></i></h4>
-                        <div id="status-group3" class="btn btn-danger pull-right">Expired</div>
-                    </div>
-                </div>
-            </div>
-            <input type="button" class="btn btn-primary btn-lg center-block" value="Add Group" disabled />
-        </div>
-    </div>
-
-    <!-- USER PROFILE -->
-    <div id="profile" class="body">
-
-        <!-- CONTACT -->
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <img id="profile-picture" class="img-circle" src="img/profile.png" />
-                <h4>Me</h4>
-                <p>Phone: (604) 123-4567</p>
+        <!-- GROUPS -->
+        <div class="tab-pane" id="groups">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="group-list"></div>
+            <div class="footer navbar-fixed-bottom">
+                <button type="button" class="btn btn-primary btn-lg btn-block btn-bottom">Add Group</button>
             </div>
         </div>
 
-        <!-- SENSITIVE LOCATIONS -->
-        <div id="sensitive-locations" class="row">
-            <div class="col-md-6 col-md-offset-3">
+        <!-- PROFILE -->
+        <div class="tab-pane text-center" id="profile">
+            <div class="col-xs-6 col-xs-offset-3">
+                <img class="img-circle" src="img/profile.png">
+                <hr>
+                <h4>(604) 123-4567</h4>
+            </div>
+            <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3" id="sensitive-locations">
                 <h4>Sensitive Locations</h4>
-                <div>
-                    <ul id="locations" class="list-group">
-                    </ul>
-                    <div class="form-group">
-                        <input type="text" id="new-location" class="form-control" placeholder="Example: 2329 West Mall, Vancouver, BC" />
-                    </div>
-                    <div class="form-group">
-                        <div id="error">Please enter a valid address.</div>
+                <ul class="list-group" id="locations"></ul>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="location-new" placeholder="Example: 2329 West Mall, Vancouver, BC">
+                    <p class="help-block">Please enter a valid address.</p>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg" id="location-add">Add Location</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAL -->
+    <div class="modal modal-simple fade" id="dial" tab-index="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Dialing ...</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FRIEND -->
+    <div class="modal fade in" id="friend" tab-index="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Friend</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img class="img-circle" id="friend-picture">
+                        <h4 id="friend-name"></h4>
+                        <h4>(728) 123-4567</h4>
                     </div>
                 </div>
-                <input type="button" id="add-location" class="btn btn-primary btn-lg" value="Add Location" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- FRIEND PROFILE -->
-    <div id="friend" class="body">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <img id="friend-picture" />
-                <h4 id="friend-name"></h4>
-                <p>Phone: (728) 123-4567</p>
-            </div>
-        </div>
-
-        <input type="button" class="btn btn-primary btn-lg btn-block btn-bottom tab-map" value="Go Back to Map" />
-    </div>
-
-    <!-- DIAL FRIEND -->
-    <div id="dial" class="body">
-        <img id="dial-picture" src="img/phone.png" />
     </div>
 
     <!-- CONDITIONS -->
-    <div id="modal-conditions" class="modal fade" tab-index="-1">
-        <div class="modal-dialog">
+    <div class="modal fade" id="conditions" tab-index="-1">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Condition</h4>
                 </div>
                 <div class="modal-body">
                     <label class="radio-inline">
-                        <input type="radio" name="condition" value="Public" /> Public
+                        <input type="radio" name="condition" value="public">
+                        <span>Public</span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="condition" value="Signal" /> Signal
+                        <input type="radio" name="condition" value="signal">
+                        <span>Signal</span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="condition" value="Private" /> Private
+                        <input type="radio" name="condition" value="private">
+                        <span>Private</span>
                     </label>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
-                    <input type="button" class="btn btn-default" value="Save" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- REFRESH -->
+    <div class="modal modal-simple fade" id="refresh" tab-index="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Refresh the map?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEMPLATES -->
+    <script type="text/template" id="group-template">
+        <div class="panel group %status%" id="group%id%">
+            <div class="panel-heading clearfix" data-toggle="collapse" data-target="#group%id%-members">
+                <h4>
+                    <i class="em em-%icon%"></i>
+                    <span>%name%</span>
+                    <label class="label pull-right text-capitalize group-status">%status%</label>
+                </h4>
+            </div>
+            <div class="collapse panel-collapse" id="group%id%-members" data-toggle="false">
+                <div class="panel-body">
+                    <ul>%members%</ul>
+                </div>
+                <div class="panel-footer clearfix">
+                    <button type="button" class="btn btn-default pull-left">Leave</button>
+                    <button type="button" class="btn btn-primary pull-right group-activate" data-group="%id%">Switch to This Group</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="member-template">
+        <li>
+            <a>%name%</a>
+        </li>
+    </script>
+
+    <script type="text/template" id="location-template">
+        <li class="list-group-item clearfix">
+            <label class="pull-left">%location%</label>
+            <label class="pull-right">Edit | Delete</label>
+        </li>
+    </script>
+
+    <script type="text/template" id="infowindow-name-template">
+        <p>
+            <h4>%name%</h4>
+        </p>
+    </script>
+
+    <script type="text/template" id="infowindow-actions-template">
+        <img data-toggle="modal" href="#dial" src="img/icon_phone.png">
+        <a class="friend-show" data-name="%name%" data-toggle="modal" href="#friend">
+            <img src="img/icon_profile.png">
+        </a>
+    </script>
+
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="js/initial.js"></script>
-    <script src="js/var.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/lost-and-found.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="js/initial.min.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 
