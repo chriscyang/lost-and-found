@@ -2,10 +2,12 @@
 /* FONT
 /* -------------------------------------------------------------------------- */
 
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
 * {
     font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+.material-icons.md-12 {
+    font-size: 12px;
 }
 
 /* -------------------------------------------------------------------------- */

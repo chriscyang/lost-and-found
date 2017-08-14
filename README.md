@@ -1,6 +1,6 @@
 # Lost & Found
 
-This was a medium-fidelity prototype created for CPSC 444 (Advanced Mehtods for HCI) during the 2015W2 session at the University of British Columbia.
+This is a medium-fidelity prototype created for CPSC 444 (Advanced Mehtods for HCI) during the 2015W2 session at the University of British Columbia.
 
 ## Team
 

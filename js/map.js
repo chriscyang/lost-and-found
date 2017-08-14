@@ -52,12 +52,13 @@ function initGroup() {
     var openedInfoWindow;
 
     function createGroupMember(name, area) {
+        var content;
         var phone = "<a onclick='dialFriend();'><img src='img/icon_phone.png' /></a>";
         var profile = "<a onclick='showFriend(" + '"' + name + '"' + ");'><img src='img/icon_profile.png' /></a>";
         if (name === "Me") {
-            var content = "<p><h4>" + name + "</h4></p>";
+            content = "<p><h4>" + name + "</h4></p>";
         } else {
-            var content = "<p><h4>" + name + "</h4></p>" + phone + profile;
+            content = "<p><h4>" + name + "</h4></p>" + phone + profile;
         }
         var marker = new google.maps.Marker({
             position : generateRandomLoc(area),
@@ -70,7 +71,7 @@ function initGroup() {
             content : marker["content"],
         });
         markers.push(marker);
-        marker.addListener("click", function() {
+        marker.addListener("click", function () {
             if (openedInfoWindow) {
                 openedInfoWindow.close();
             }
@@ -79,7 +80,7 @@ function initGroup() {
             console.log("User clicked on " + marker["name"] + "'s icon.");
         });
         console.log(name + " was placed at " + marker["position"] + ".");
-    };
+    }
 
     map.setCenter(group["centre"]);
 

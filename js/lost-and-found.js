@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // -------------------------------------------------------------------------
     // MAP
@@ -10,7 +10,7 @@ $(document).ready(function() {
     // NAVBAR
     // -------------------------------------------------------------------------
 
-    $(".tab-map").click(function() {
+    $(".tab-map").click(function () {
         $(".tabs").removeClass("active");
         $("li.tabs.tab-map").addClass("active");
         $(".body").hide();
@@ -24,28 +24,28 @@ $(document).ready(function() {
         map.setCenter(center);
     });
 
-    $(".tab-groups").click(function() {
+    $(".tab-groups").click(function () {
         $(".tabs").removeClass("active");
         $("li.tabs.tab-groups").addClass("active");
         $(".body").hide();
         $("#groups").show();
     });
 
-    $(".tab-profile").click(function() {
+    $(".tab-profile").click(function () {
         $(".tabs").removeClass("active");
         $("li.tabs.tab-profile").addClass("active");
         $(".body").hide();
         $("#profile").show();
-        if (condition != "Public") {
+        if (condition !== "Public") {
             $("#sensitive-locations").show();
         }
     });
 
-    $(".tab-conditions").click(function() {
+    $(".tab-conditions").click(function () {
         $("#modal-conditions").modal("show");
     });
 
-    $(".tab-refresh").click(function() {
+    $(".tab-refresh").click(function () {
         if (confirm("Are you sure you want to refresh the map?")) {
             clearOverlays();
             initGroup();
@@ -58,15 +58,15 @@ $(document).ready(function() {
     // GROUPS
     // -------------------------------------------------------------------------
 
-    $("[data-toggle='collapse']").click(function() {
+    $("[data-toggle='collapse']").click(function () {
         $(".collapse").collapse("hide");
     });
 
-    $(".friend > a").click(function() {
+    $(".friend > a").click(function () {
         showFriend($(this).html());
     });
 
-    $("#show-group1").click(function() {
+    $("#show-group1").click(function () {
         if ($("#group1").hasClass("panel-warning")) {
             $("#group2").removeClass("panel-primary");
             $("#group2").addClass("panel-warning");
@@ -90,7 +90,7 @@ $(document).ready(function() {
         $("#listing-group1").collapse("hide");
     });
 
-    $("#show-group2").click(function() {
+    $("#show-group2").click(function () {
         if ($("#group2").hasClass("panel-warning")) {
             $("#group1").removeClass("panel-primary");
             $("#group1").addClass("panel-warning");
@@ -118,11 +118,11 @@ $(document).ready(function() {
     // USER PROFILE
     // -------------------------------------------------------------------------
 
-    $("#new-location").focus(function() {
+    $("#new-location").focus(function () {
         return false;
     });
 
-    $("#add-location").click(function() {
+    $("#add-location").click(function () {
         if ($("#new-location").val()) {
             $("#new-location").parent().removeClass("has-error");
             $("#locations").append("<li class='list-group-item clearfix'>" +
@@ -141,7 +141,7 @@ $(document).ready(function() {
     // CONDITIONS
     // -------------------------------------------------------------------------
 
-    $(document).keyup(function(e) {
+    $(document).keyup(function (e) {
         if (e.keyCode === 27) {
             $("#modal-conditions").modal("hide");
         }
@@ -155,7 +155,7 @@ $(document).ready(function() {
         $("input:radio[value='Private']").attr("checked", "checked");
     }
 
-    $("input[value='Save']").click(function() {
+    $("input[value='Save']").click(function () {
         var selectedCondition = $("input[name='condition']:checked").val();
         switch (selectedCondition) {
             case "Public":
@@ -177,7 +177,7 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        if (condition != "Public") {
+        if (condition !== "Public") {
             condition = "Public";
             $("#locations").html("");
         }
@@ -187,7 +187,6 @@ $(document).ready(function() {
         }
         if (group) {
             initGroup();
-
         }
     }
 
@@ -195,7 +194,7 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        if (condition != "Signal") {
+        if (condition !== "Signal") {
             condition = "Signal";
             $("#locations").html("");
         }
@@ -204,7 +203,7 @@ $(document).ready(function() {
         }
         if (group) {
             initGroup();
-            timeout.push(setTimeout(function() {
+            timeout.push(setTimeout(function () {
                 markers[3].setMap(null);
                 alert(markers[3]["name"] + " has gone near a sensitive location.");
             }, 5000));
@@ -215,7 +214,7 @@ $(document).ready(function() {
         clearTimeout(timeout);
         timeout = [];
         clearOverlays();
-        if (condition != "Private") {
+        if (condition !== "Private") {
             condition = "Private";
             $("#locations").html("");
         }
@@ -224,7 +223,7 @@ $(document).ready(function() {
         }
         if (group) {
             initGroup();
-            timeout.push(setTimeout(function() {
+            timeout.push(setTimeout(function () {
                 markers[3].setMap(null);
             }, 5000));
         }
@@ -234,7 +233,7 @@ $(document).ready(function() {
     // DIAL FRIEND
     // -------------------------------------------------------------------------
 
-    $("#dial").click(function() {
+    $("#dial").click(function () {
         $(this).hide();
     });
 });
