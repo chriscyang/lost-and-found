@@ -3,7 +3,50 @@
 /* -------------------------------------------------------------------------- */
 
 * {
-    font-family: "Montserrat", Helvetica, sans-serif;
+    font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+/* -------------------------------------------------------------------------- */
+/* RESETS
+/* -------------------------------------------------------------------------- */
+
+a:focus,
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+
+.panel-heading.collapsed {
+    border-bottom: none;
+}
+
+.panel-footer {
+    background-color: #fff;
+}
+
+[data-toggle] {
+    cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------- */
+/* EXTENSIONS
+/* -------------------------------------------------------------------------- */
+
+.tab-pane-maximize {
+    position: absolute;
+    z-index: -1;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.btn-bottom {
+    position: absolute;
+    bottom: 0;
+    border-radius: 0;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -36,27 +79,10 @@
 /* GROUPS
 /* -------------------------------------------------------------------------- */
 
-.panel-heading.collapsed {
-    border-bottom: none;
-}
-
-.group .panel-heading {
-    cursor: pointer;
-}
-
 .group-status {
     padding: 7px;
     cursor: pointer;
 }
-
-.group .panel-footer {
-    border-top: none;
-    background-color: #fff;
-}
-
-/* -------------------------------------------------------------------------- */
-/* ACTIVE GROUPS
-/* -------------------------------------------------------------------------- */
 
 .group.active {
     border-color: #337ab7;
@@ -76,18 +102,9 @@
     border-top-color: #337ab7;
 }
 
-.group.active > .panel-heading .badge {
-    color: #337ab7;
-    background-color: #fff;
-}
-
 .group.active > .panel-footer .panel-collapse > .panel-body {
     border-bottom-color: #337ab7;
 }
-
-/* -------------------------------------------------------------------------- */
-/* INACTIVE GROUPS
-/* -------------------------------------------------------------------------- */
 
 .group.inactive {
     border-color: #faebcc;
@@ -107,18 +124,9 @@
     border-top-color: #faebcc;
 }
 
-.group.inactive > .panel-heading .badge {
-    color: #fcf8e3;
-    background-color: #8a6d3b;
-}
-
 .group.inactive > .panel-footer .panel-collapse > .panel-body {
     border-bottom-color: #faebcc;
 }
-
-/* -------------------------------------------------------------------------- */
-/* EXPIRED GROUPS
-/* -------------------------------------------------------------------------- */
 
 .group.expired {
     border-color: #ebccd1;
@@ -138,44 +146,6 @@
     border-top-color: #ebccd1;
 }
 
-.group.expired > .panel-heading .badge {
-    color: #f2dede;
-    background-color: #a94442;
-}
-
 .group.expired > .panel-footer .panel-collapse > .panel-body {
     border-bottom-color: #ebccd1;
-}
-
-/* -------------------------------------------------------------------------- */
-/* ELEMENTS
-/* -------------------------------------------------------------------------- */
-
-.tab-pane-full {
-    position: absolute;
-    z-index: -1;
-    top: 50px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #fff;
-}
-
-a:hover {
-    cursor: pointer;
-}
-
-.btn-bottom {
-    position: absolute;
-    bottom: 0;
-    border-radius: 0;
-}
-
-.img-circle {
-    width: 120px;
-    height: 120px;
-}
-
-img[data-toggle] {
-    cursor: pointer;
 }

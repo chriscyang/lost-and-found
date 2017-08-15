@@ -3,7 +3,6 @@
 <html>
 
 <head>
-
     <!-- META -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -13,27 +12,33 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
-
     <!-- NAVBAR -->
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a data-toggle="tab" href="#map">Map</a>
+                <li>
+                    <a data-toggle="tab" href="#map">
+                        <i class="fa fa-fw fa-map-marker"></i>
+                        <span>Map</span>
+                    </a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#groups">Groups</a>
+                    <a data-toggle="tab" href="#groups">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span>Groups</span>
+                    </a>
                 </li>
                 <li>
-                    <a data-toggle="tab" href="#profile">Profile</a>
+                    <a data-toggle="tab" href="#profile">
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        <span>Profile</span>
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -51,23 +56,20 @@
         </div>
     </nav>
 
+    <!-- CONTENT -->
     <div class="tab-content">
+        <div class="tab-pane tab-pane-maximize" id="map"></div>
 
-        <!-- MAP -->
-        <div class="tab-pane tab-pane-full active" id="map"></div>
-
-        <!-- GROUPS -->
         <div class="tab-pane" id="groups">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="group-list"></div>
-            <div class="footer navbar-fixed-bottom">
-                <button type="button" class="btn btn-primary btn-lg btn-block btn-bottom">Add Group</button>
-            </div>
+            <button class="btn btn-lg btn-block btn-bottom btn-primary">
+                <span>Add Group</span>
+            </button>
         </div>
 
-        <!-- PROFILE -->
         <div class="tab-pane text-center" id="profile">
             <div class="col-xs-6 col-xs-offset-3">
-                <img class="img-circle" src="img/profile.png">
+                <img class="img-circle" src="img/profile.png" width="120px" height="120px">
                 <hr>
                 <h4>(604) 123-4567</h4>
             </div>
@@ -75,57 +77,56 @@
                 <h4>Sensitive Locations</h4>
                 <ul class="list-group" id="locations"></ul>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="location-new" placeholder="Example: 2329 West Mall, Vancouver, BC">
+                    <input type="text" class="form-control" id="location" placeholder="Example: 2329 West Mall, Vancouver, BC">
                     <p class="help-block">Please enter a valid address.</p>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg" id="location-add">Add Location</button>
+                <button type="submit" class="btn btn-lg btn-primary">
+                    <span>Add Location</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- DIAL -->
-    <div class="modal modal-simple fade" id="dial" tab-index="-1">
+    <!-- MODALS -->
+    <div class="modal fade" id="dial" tab-index="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Dialing ...</h4>
+                    <h4 class="modal-title">Dialing...</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-default" data-dismiss="modal">
+                        <span>Close</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- FRIEND -->
-    <div class="modal fade in" id="friend" tab-index="-1">
+    <div class="modal fade" id="friend" tab-index="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Friend</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="text-center">
-                        <img class="img-circle" id="friend-picture">
-                        <h4 id="friend-name"></h4>
-                        <h4>(728) 123-4567</h4>
-                    </div>
+                <div class="modal-body text-center">
+                    <img class="img-circle" id="friend-picture">
+                    <h4 id="friend-name"></h4>
+                    <h4>(728) 123-4567</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-default" data-dismiss="modal">
+                        <span>Close</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONDITIONS -->
     <div class="modal fade" id="conditions" tab-index="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Condition</h4>
                 </div>
                 <div class="modal-body">
@@ -143,74 +144,86 @@
                     </label>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+                    <button class="btn btn-default" data-dismiss="modal">
+                        <span>Cancel</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">
+                        <span>Save</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- REFRESH -->
-    <div class="modal modal-simple fade" id="refresh" tab-index="-1">
+    <div class="modal fade" id="refresh" tab-index="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Refresh the map?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    <button class="btn btn-default" data-dismiss="modal">
+                        <span>No</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">
+                        <span>Yes</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- TEMPLATES -->
-    <script type="text/template" id="group-template">
-        <div class="panel group %status%" id="group%id%">
-            <div class="panel-heading clearfix" data-toggle="collapse" data-target="#group%id%-members">
+    <script type="text/template" id="groups-template">
+        <% _.each(groups, function (group) { %>
+        <div class="group <%- group.status %> panel" id="group<%- group.id %>" data-id="<%- group.id %>">
+            <div class="panel-heading clearfix" data-toggle="collapse" data-target="#group<%- group.id %>-members">
                 <h4>
-                    <i class="em em-%icon%"></i>
-                    <span>%name%</span>
-                    <label class="label pull-right text-capitalize group-status">%status%</label>
+                    <i class="fa fa-fw fa-<%- group.icon %>"></i>
+                    <span><%- group.name %></span>
+                    <label class="group-status label text-capitalize pull-right"><%- group.status %></label>
                 </h4>
             </div>
-            <div class="collapse panel-collapse" id="group%id%-members" data-toggle="false">
+            <div class="collapse panel-collapse" id="group<%- group.id %>-members" data-toggle="false">
                 <div class="panel-body">
-                    <ul>%members%</ul>
+                    <ul>
+                        <% _.each(group.members, function (member) { %>
+                        <li><%- member %></li>
+                        <% }); %>
+                    </ul>
                 </div>
                 <div class="panel-footer clearfix">
-                    <button type="button" class="btn btn-default pull-left">Leave</button>
-                    <button type="button" class="btn btn-primary pull-right group-activate" data-group="%id%">Switch to This Group</button>
+                    <button class="btn btn-default pull-left">
+                        <span>Leave</span>
+                    </button>
+                    <button class="group-switch btn btn-primary pull-right" data-id="<%- group.id %>">
+                        <span>Switch</span>
+                    </button>
                 </div>
             </div>
         </div>
-    </script>
-
-    <script type="text/template" id="member-template">
-        <li>
-            <a>%name%</a>
-        </li>
+        <% }); %>
     </script>
 
     <script type="text/template" id="location-template">
         <li class="list-group-item clearfix">
-            <label class="pull-left">%location%</label>
+            <label class="pull-left"><%- location %></label>
             <label class="pull-right">Edit | Delete</label>
         </li>
     </script>
 
-    <script type="text/template" id="infowindow-name-template">
+    <script type="text/template" id="info-window-name-template">
         <p>
-            <h4>%name%</h4>
+            <h4><%- name %></h4>
         </p>
     </script>
 
-    <script type="text/template" id="infowindow-actions-template">
-        <img data-toggle="modal" href="#dial" src="img/icon_phone.png">
-        <a class="friend-show" data-name="%name%" data-toggle="modal" href="#friend">
-            <img src="img/icon_profile.png">
+    <script type="text/template" id="info-window-actions-template">
+        <a data-toggle="modal" href="#dial">
+            <img src="img/phone.png">
+        </a>
+        <a data-toggle="modal" href="#friend" data-name="<%- name %>">
+            <img src="img/user.png">
         </a>
     </script>
 
@@ -220,8 +233,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/lodash.min.js"></script>
     <script src="js/initial.min.js"></script>
-    <script src="js/script.js"></script>
-
+    <script src="js/app.js"></script>
 </body>
 
 </html>
