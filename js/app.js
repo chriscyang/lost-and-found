@@ -42,9 +42,9 @@ const App = (() => {
             GROUP_STATUS: '.group-status',
             GROUP_SWITCH: '.group-switch',
 
-            ACTIVE: '.' + pvt.Status.ACTIVE,
-            INACTIVE: '.' + pvt.Status.INACTIVE,
-            EXPIRED: '.' + pvt.Status.EXPIRED,
+            ACTIVE: `.${pvt.Status.ACTIVE}`,
+            INACTIVE: `.${pvt.Status.INACTIVE}`,
+            EXPIRED: `.${pvt.Status.EXPIRED}`,
 
             COLLAPSE: '.collapse',
 
@@ -272,7 +272,7 @@ const App = (() => {
         // ---------------------------------------------------------------------
 
         pvt.setTab = (tab) => {
-            $('[href="#' + tab + '"]').tab('show');
+            $(`[href="#${tab}"]`).tab('show');
         };
 
         pvt.setGroup = (id) => {
@@ -293,7 +293,7 @@ const App = (() => {
                     .find(pvt.Selector.GROUP_SWITCH)
                     .show();
                 $groups
-                    .filter('[data-id=' + id + ']')
+                    .filter(`[data-id=${id}]`)
                     .addClass(pvt.Status.ACTIVE)
                     .removeClass(pvt.Status.INACTIVE)
                     .find(pvt.Selector.GROUP_STATUS)
@@ -317,7 +317,7 @@ const App = (() => {
                 pvt.map.setZoom(pvt.MAP_ZOOM);
                 pvt.setMarkers();
 
-                console.log('Map initialized under ' + pvt.condition + ' condition.');
+                console.log(`Map initialized under ${pvt.condition} condition.`);
 
                 if (pvt.condition !== pvt.Condition.PUBLIC) {
                     pvt.setTimeout();
@@ -349,14 +349,14 @@ const App = (() => {
                 });
                 pvt.markers.push(marker);
 
-                console.log(member + ' was placed at ' + marker.position + '.');
+                console.log(`${member} was placed at ${marker.position}.`);
             });
         };
 
         pvt.setCondition = (condition) => {
             pvt.condition = condition;
             pvt.$conditions
-                .find('input[value=' + pvt.condition + ']')
+                .find(`input[value=${pvt.condition}]`)
                 .prop('checked', true);
 
             pvt.$sensitive.toggle(pvt.condition !== pvt.Condition.PUBLIC);
@@ -367,7 +367,7 @@ const App = (() => {
                 const member = pvt.getRandomMarker();
                 member.setMap(null);
 
-                const message = member.name + ' has gone near a sensitive location.';
+                const message = `${member.name} has gone near a sensitive location.`;
                 console.log(message);
                 if (pvt.condition === pvt.Condition.SIGNAL) {
                     alert(message);
@@ -389,7 +389,7 @@ const App = (() => {
             if (name === pvt.user) {
                 return 'https://maps.google.com/mapfiles/arrow.png';
             } else {
-                return 'https://www.google.com/mapfiles/marker' + _.head(name) + '.png';
+                return `https://www.google.com/mapfiles/marker${_.head(name)}.png`;
             }
         };
 
