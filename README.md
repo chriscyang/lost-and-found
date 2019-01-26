@@ -4,8 +4,8 @@ This is a medium-fidelity prototype created for CPSC 444 (Advanced Mehtods for H
 
 ## Team
 
-* [Gabrielle Chen](http://www.github.com/gabriellechen236)
-* Ori Nevares
-* [Norris Ng](http://www.github.com/norrisng)
-* [Martin Tsang](http://www.github.com/m4rtint)
-* [Christopher Yang](http://www.github.com/chriscyang)
+- [Gabrielle Chen](http://www.github.com/gabriellechen236)
+- Ori Nevares
+- [Norris Ng](http://www.github.com/norrisng)
+- [Martin Tsang](http://www.github.com/m4rtint)
+- [Christopher Yang](http://www.github.com/chriscyang)
